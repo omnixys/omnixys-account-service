@@ -1,127 +1,55 @@
-HELP.md
-.gradle
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+
+# Build output
+/target/
+.build/
+build/
+
+# Gradle
+.gradle/
 build/
 !gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+!gradle-wrapper.properties
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
-
-### IntelliJ IDEA ###
-.idea
+# IntelliJ
+.idea/
 *.iws
-*.iml
 *.ipr
+*.iml
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-### VS Code ###
+# VSCode
 .vscode/
-
-# compiled output
-/dist
-/node_modules
-/build
-
-# Generierte Dateien
-build
-.extras/doc/projekthandbuch/html/*
-.extras/doc/folien/*.html
-.extras/doc/api/*
-.extras/doc/ReadMe.html
-scripts/dependency-check-report.html
-node-ts
-temp
-tmp
-dependencies.svg
-
-# Sensible Daten (Passwort, Token, private Schluessel)
-.extras/compose/db/mysql/db_root_password.txt
-.extras/compose/db/postgres/db_password.txt
-.extras/lasttest-locust/__pycache__
-.extras/lasttest-locust/.venv
-.extras/postman
-.extras/*.png
-.extras/*.jpeg
-.extras/*.gif
-.extras/*.mp4
-.extras/*.mpeg
-.extras/*.mkv
-.extras/*.avi
-.extras/*.ogg
-.extras/*.webm
-src/config/resources/tls/key.pem
-sonar-project.properties
+!.vscode/settings.json
 
 # Logs
-logs
 *.log
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
+logs/
 
-# OS
-.DS_Store
-
-# Tests
-/coverage
-/.nyc_output
-.clinic
-__tests__/buch/__snapshots__
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# dotenv environment variable files
+# Environment
 .env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+.env.*
 
-# temp directory
-.temp
-.tmp
+# OS files
+.DS_Store
+Thumbs.db
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
+# Kafka & TLS example paths (falls lokal)
+.extras/compose/**/db_*.txt
+src/config/resources/tls/key.pem
 
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+# Test Reports
+/test-output/
+coverage/
 
+# === MongoDB / Temp ===
+*.lock
+.dump/
+data/
+temp/
+tmp/*
