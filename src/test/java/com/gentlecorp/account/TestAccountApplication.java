@@ -1,4 +1,4 @@
-package com.gentlecorp.account;
+package com.omnixys.account;
 
 import org.springframework.boot.SpringApplication;
 

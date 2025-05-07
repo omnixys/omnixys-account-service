@@ -60,12 +60,12 @@ spring:
           json:
             type:
               mapping: >
-                balance: com.gentlecorp.account.models.dto.BalanceDTO,
-                com.gentlecorp.person.models.events.DeleteAccountDTO:com.gentlecorp.account.models.event.DeleteAccountDTO,
-                com.gentlecorp.person.models.events.CreateAccountDTO:com.gentlecorp.account.models.event.CreateAccountDTO
+                balance: com.omnixys.account.models.dto.BalanceDTO,
+                com.omnixys.person.models.events.DeleteAccountDTO:com.omnixys.account.models.event.DeleteAccountDTO,
+                com.omnixys.person.models.events.CreateAccountDTO:com.omnixys.account.models.event.CreateAccountDTO
             trusted:
               packages:
-                - com.gentlecorp.person.models.events
+                - com.omnixys.person.models.events
           deserializer:
             value:
               delegate:
@@ -121,7 +121,7 @@ management:
 app:
   version: ${spring.application.version}
   name: ${spring.application.name}
-  groupId: gentlecorp-${spring.application.name}
+  groupId: omnixys-${spring.application.name}
   env: ${ACTIVE_PROFILE:dev}
   password: p
   keycloak:
@@ -147,7 +147,7 @@ logging:
       %date{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %5level ${PID:- } --- [%thread]
       %-40.40logger{39} : %m%n%wEx
   level:
-    com.gentlecorp.account: trace
+    com.omnixys.account: trace
     org.apache.catalina.loader.WebappClassLoaderBase: info
     org.springframework.boot.availability.ApplicationAvailabilityBean: debug
     org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener: warn

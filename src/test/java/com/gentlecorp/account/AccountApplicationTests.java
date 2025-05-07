@@ -1,4 +1,4 @@
-package com.gentlecorp.account;
+package com.omnixys.account;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
