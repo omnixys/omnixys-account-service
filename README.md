@@ -22,7 +22,7 @@ Der **Omnixys Account Service** ist ein Java-basierter Microservice zur Verwaltu
 
 ## 🛠️ Technologie-Stack
 
-- **Spring Boot 23 (Java)**
+- **Spring Boot 24 (Java)**
 - **GraphQL (Schema First)** via `graphql-java-tools`
 - **PostgreSQL** als relationale Datenbank
 - **Kafka** für Logging- und Event-Kommunikation

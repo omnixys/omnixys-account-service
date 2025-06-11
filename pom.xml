@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.3</version>
+		<version>3.5.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.omnixys</groupId>
@@ -44,7 +44,7 @@
 
 
 	<properties>
-		<java.version>23</java.version>
+		<java.version>24</java.version>
 		<hibernate.version>7.0.0.Alpha2</hibernate.version>
 		<jakarta-persistence.version>3.2.0</jakarta-persistence.version>
 		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
@@ -55,7 +55,7 @@
 		<enable.preview>--enable-preview</enable.preview>
 		<hibernate-processor.version>7.0.0.Alpha2</hibernate-processor.version>
 
-		<jackson-databind>2.19.0-rc2</jackson-databind>
+<!--		<jackson-databind>2.19.0-rc2</jackson-databind>-->
 		<jackson-module-parameter-names>2.19.0-rc2</jackson-module-parameter-names>
 	</properties>
 	<dependencies>
@@ -145,21 +145,26 @@
 			<artifactId>postgresql</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>mysql</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<!--_________________________________________MESSAGING______________________________________________________ -->
 		<dependency>
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson-databind}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-parameter-names</artifactId>
-			<version>${jackson-databind}</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.fasterxml.jackson.core</groupId>-->
+<!--			<artifactId>jackson-databind</artifactId>-->
+<!--			<version>${jackson-databind}</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>com.fasterxml.jackson.module</groupId>-->
+<!--			<artifactId>jackson-module-parameter-names</artifactId>-->
+<!--			<version>${jackson-databind}</version>-->
+<!--		</dependency>-->
 
 		<!--__________________________________________WICHTIGE EXTRAS_______________________________________________ -->
 		<dependency>
@@ -324,8 +329,8 @@
 							<version>${lombok-mapstruct-binding.version}</version>
 						</path>
 					</annotationProcessorPaths>
-					<source>{java.version}</source>
-					<target>{java.version}</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 					<compilerArgs>
 						<arg>${enable.preview}</arg>
 					</compilerArgs>

@@ -23,10 +23,10 @@ spring:
     username: ${app.postgres.username}
     password: ${app.postgres.password}
 
-  flyway:
-#    locations: classpath:db/migration/{vendor}
-    locations: classpath:db/migration
-    create-schemas: false
+#   flyway:
+# #    locations: classpath:db/migration/{vendor}
+#     locations: classpath:db/migration
+#     create-schemas: false
 
   jpa:
     hibernate:
@@ -49,7 +49,7 @@ spring:
        validation.mode: NONE
 
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: ${app.kafka.host}:9092
 
     consumer:
       group-id: ${app.groupId}
@@ -99,6 +99,9 @@ management:
     enable:
       all: true
   endpoints:
+    health:
+      probes:
+        enabled: true
     prometheus:
       enabled: true
     web:
@@ -113,9 +116,7 @@ management:
       probability: 1.0
   otlp:
     tracing:
-      # endpoint: http://tempo:4318
-      endpoint: http://localhost:4318/v1/traces
-      # endpoint: http://localhost:4317
+      endpoint: http://${app.tracing.tempo}:4318/v1/traces
 
 # Applikationsspezifische Einstellungen
 app:
@@ -130,6 +131,12 @@ app:
     port: ${KC_SERVICE_PORT}
     realm: ${KC_SERVICE_REALM}
     client-id: ${KC_SERVICE_CLIENT_ID}
+  
+  tracing:
+    tempo: ${TEMPO_HOST}
+
+  kafka:
+    host: ${KAFKA_HOST}
 # Logging-Konfiguration
 logging:
   file.name: ./tmp/application.log

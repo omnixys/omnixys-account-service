@@ -59,6 +59,8 @@
 /Users/gentlebookpro/Projekte/Omnixys/services/account/src/main/java/com/omnixys/account/tracing/LoggerPlus.java
 /Users/gentlebookpro/Projekte/Omnixys/services/account/src/main/java/com/omnixys/account/tracing/LoggerPlusFactory.java
 /Users/gentlebookpro/Projekte/Omnixys/services/account/src/main/java/com/omnixys/account/tracing/TraceContextUtil.java
+/Users/gentlebookpro/Projekte/Omnixys/services/account/src/main/java/com/omnixys/account/utils/Banner.java
 /Users/gentlebookpro/Projekte/Omnixys/services/account/src/main/java/com/omnixys/account/utils/Constants.java
 /Users/gentlebookpro/Projekte/Omnixys/services/account/src/main/java/com/omnixys/account/utils/Env.java
+/Users/gentlebookpro/Projekte/Omnixys/services/account/src/main/java/com/omnixys/account/utils/Figlets.java
 /Users/gentlebookpro/Projekte/Omnixys/services/account/src/main/java/com/omnixys/account/utils/ValidationService.java

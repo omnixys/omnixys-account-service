@@ -26,6 +26,7 @@ com/omnixys/account/models/event/LogDTO.class
 com/omnixys/account/security/CustomUserDetails.class
 com/omnixys/account/models/entities/Account_.class
 com/omnixys/account/models/entities/Account$AccountBuilder.class
+com/omnixys/account/util/Banner.class
 com/omnixys/account/exceptions/NotFoundException.class
 com/omnixys/account/utils/ValidationService.class
 com/omnixys/account/dev/Flyway.class
@@ -54,6 +55,7 @@ com/omnixys/account/models/dto/BalanceDTO.class
 com/omnixys/account/repository/AccountRepository.class
 com/omnixys/account/models/event/CreateAccountDTO.class
 com/omnixys/account/utils/Env.class
+com/omnixys/account/util/Figlets.class
 com/omnixys/account/config/ApplicationConfig.class
 com/omnixys/account/exceptions/VersionInvalidException.class
 com/omnixys/account/models/entities/Account.class

@@ -16,6 +16,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
+import static com.omnixys.account.util.Banner.TEXT;
+
 @SpringBootApplication(proxyBeanMethods = false)
 @Import({ApplicationConfig.class, DevConfig.class})
 @EnableConfigurationProperties({AppProperties.class})
@@ -28,10 +30,9 @@ public class AccountApplication {
 
 	public static void main(String[] args) {
 		new Env();
-		SpringApplication.run(AccountApplication.class, args);
-//		final var app = new SpringApplication(AccountApplication.class);
-//		app.setBanner((_, _, out) -> out.println(TEXT));
-//		app.run(args);
+		final var app = new SpringApplication(AccountApplication.class);
+		app.setBanner((_, _, out) -> out.println(TEXT));
+		app.run(args);
 	}
 
 	@Bean

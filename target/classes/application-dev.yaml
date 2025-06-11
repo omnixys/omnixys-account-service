@@ -9,8 +9,9 @@ spring:
       #url: jdbc:postgresql://localhost/account?sslmode=verify-ca&sslrootcert=C:/Zimmermann/volumes/postgres/tls/certificate.crt
 
   flyway:
-      tablespace: accountspace
+      # tablespace: accountspace
       clean-disabled: false
+      locations: classpath:db/migration/dev
 
   devtools:
       livereload:
