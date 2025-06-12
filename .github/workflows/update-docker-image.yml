@@ -117,7 +117,7 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ${{ env.IMAGE_NAME }}:${{ env.CURRENT_DATE }}
+            ${{ env.IMAGE_NAME }}:${{ vars.CURRENT_DATE }}
             ${{ env.IMAGE_NAME }}:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
@@ -127,7 +127,7 @@ jobs:
   
       - name: Sign Docker Image with cosign (OIDC/GitHub)
         run: |
-          cosign sign --key github ${{ env.IMAGE_NAME }}:${{ env.CURRENT_DATE }}
+          cosign sign --key github ${{ env.IMAGE_NAME }}:${{ vars.CURRENT_DATE }}
           cosign sign --key github ${{ env.IMAGE_NAME }}:latest
         
       - name: Install CycloneDX Maven Plugin
