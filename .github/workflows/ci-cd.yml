@@ -219,3 +219,23 @@ jobs:
             ${{ env.IMAGE_NAME }}:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@v3
+  
+      - name: Sign Docker Image with cosign (OIDC/GitHub)
+        run: |
+          cosign sign --key github ${{ env.IMAGE_NAME }}:${{ env.CURRENT_DATE }}
+          cosign sign --key github ${{ env.IMAGE_NAME }}:latest
+        
+      - name: Install CycloneDX Maven Plugin
+        run: |
+          mvn org.cyclonedx:cyclonedx-maven-plugin:2.7.9:makeAggregateBom
+  
+      - name: Upload SBOM (CycloneDX)
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom-cyclonedx
+          path: target/bom.json
+
+#cosign verify --key github ghcr.io/your-org/your-image:2025-06-12
