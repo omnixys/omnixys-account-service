@@ -17,7 +17,7 @@ env:
 jobs:
   sign-and-attest:
     name: Sign & Attest Docker Image
-    needs: snyk  # oder docker-scout
+    needs: [docker-scout]
     runs-on: ubuntu-latest
     permissions:
       id-token: write  # für GitHub OIDC
@@ -37,7 +37,7 @@ jobs:
 
       - name: Sign Image with Cosign
         run: |
-          cosign sign --yes ${IMAGE_NAME}:${CURRENT_DATE}
+          cosign sign --yes --recursive ${IMAGE_NAME}:${CURRENT_DATE}
 
       - name: Attach SBOM as Attestation
         run: |
