@@ -3,7 +3,12 @@ name: Update Docker Image Tag
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  id-token: write # ← WICHTIG für Cosign ohne Schlüssel (keyless signing)
+
 env:
+  COSIGN_EXPERIMENTAL: "true"
   IMAGE_NAME: ${{ secrets.DOCKER_USER }}/${{ secrets.SERVICE }}
 
   POSTGRES_SQL_HOST: ${{ secrets.POSTGRES_SQL_HOST }}
