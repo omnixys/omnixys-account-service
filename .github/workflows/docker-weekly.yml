@@ -113,7 +113,7 @@ jobs:
             REVISION=${{ github.sha }}
             CREATED=${{ env.CURRENT_DATE }}
             APP_VERSION=${{ env.CURRENT_DATE }}
-            APP_NAME=${{ secrets.SERVICE }}-service
+            APP_NAME=${{ secrets.SERVICE }}
             JAVA_VERSION=${{ matrix.java-version }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
@@ -126,7 +126,7 @@ jobs:
         run: |
             cosign sign --yes --recursive ${{ env.IMAGE_NAME_REPOSITORY }}:${{ env.CURRENT_DATE }}
             cosign sign --yes --recursive ${{ env.IMAGE_NAME_REPOSITORY }}:latest
-            
+
       - name: Install CycloneDX Maven Plugin
         run: |
           mvn org.cyclonedx:cyclonedx-maven-plugin:2.7.9:makeAggregateBom
