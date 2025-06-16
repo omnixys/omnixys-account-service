@@ -9,7 +9,7 @@ permissions:
 
 env:
   COSIGN_EXPERIMENTAL: "true"
-  IMAGE_NAME: ${{ secrets.DOCKER_USER }}/${{ secrets.SERVICE }}
+  IMAGE_NAME: ${{ secrets.DOCKER_USER }}/${{ secrets.SERVICE }}-service
 
   POSTGRES_SQL_HOST: ${{ secrets.POSTGRES_SQL_HOST }}
   POSTGRES_SQL_PORT: ${{ secrets.POSTGRES_SQL_PORT }}
@@ -44,6 +44,9 @@ env:
 jobs:
   docker:
     name: 🐳 Docker Build & Push
+    strategy:
+              matrix:
+                java-version: [24]
     runs-on: ubuntu-latest
     if: github.actor == 'caleb-script' && github.event_name == 'push'
     steps:
@@ -123,6 +126,12 @@ jobs:
           tags: |
             ${{ env.IMAGE_NAME }}:${{ vars.CURRENT_DATE }}
             ${{ env.IMAGE_NAME }}:latest
+          build-args: |
+            REVISION=${{ github.sha }}
+            CREATED=${{ vars.CURRENT_DATE }}
+            APP_VERSION=${{ vars.CURRENT_DATE }}
+            APP_NAME=${{ secrets.SERVICE }}-service
+            JAVA_VERSION=${{ matrix.java-version }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 
@@ -131,8 +140,9 @@ jobs:
 
       - name: Sign Docker Image with cosign (OIDC/GitHub)
         run: |
-          cosign sign --yes ${{ env.IMAGE_NAME }}:${{ vars.CURRENT_DATE }}
-          cosign sign --yes ${{ env.IMAGE_NAME }}:latest
+          cosign sign --yes --recursive ${{ env.IMAGE_NAME }}:${{ vars.CURRENT_DATE }}
+          cosign sign --yes --recursive ${{ env.IMAGE_NAME }}:latest
+
 
       - name: Install CycloneDX Maven Plugin
         run: |
